@@ -1,0 +1,66 @@
+
+### One-to-Many (1:N)
+1. **Category to Events**:
+   - A single category (`catId`) can be associated with multiple events (`eventId`), but each event is associated with only one category.
+
+2. **Events to Bookings**:
+   - A single event (`eventId`) can have multiple bookings (`bookingId`), but each booking is associated with only one event.
+
+3. **Registration to Bookings**:
+   - A single user (`userId`) can make multiple bookings (`bookingId`), but each booking is associated with only one user.
+
+4. **Registration to Events** (for event creation):
+   - A single user (`userId`) can create multiple events (`eventId`), but each event is associated with only one user.
+
+5. **Role to Registration**:
+   - A single role (`roleId`) can be associated with multiple users (`userId`), but each user has only one role.
+
+6. **Registration to AttendeesPayment**:
+   - A single user (`userId`) can make multiple payments (`transactionId`), but each payment is associated with only one user.
+
+### Many-to-One (N:1)
+These are essentially the inverse of the one-to-many relationships mentioned above.
+
+1. **Events to Category**:
+   - Each event (`eventId`) is associated with one category (`catId`).
+
+2. **Bookings to Events**:
+   - Each booking (`bookingId`) is associated with one event (`eventId`).
+
+3. **Bookings to Registration**:
+   - Each booking (`bookingId`) is associated with one user (`userId`).
+
+4. **Events to Registration** (for event creation):
+   - Each event (`eventId`) is associated with one user (`userId`).
+
+5. **Registration to Role**:
+   - Each user (`userId`) is associated with one role (`roleId`).
+
+6. **AttendeesPayment to Registration**:
+   - Each payment (`transactionId`) is associated with one user (`userId`).
+
+### Many-to-Many (M:N)
+1. **Registration to Events** (for attending events):
+   - This relationship is implied through the **Bookings** entity. A user can book multiple events, and an event can have multiple users booking it.
+
+2. **Events to Registration** (for organizers and attendees):
+   - Multiple users can organize or attend multiple events.
+
+### Summary Table
+
+| Relationship Type | Entity 1 | Entity 2         |
+|-------------------|----------|------------------|
+| One-to-Many       | Category | Events           |
+| One-to-Many       | Events   | Bookings         |
+| One-to-Many       | Registration | Bookings    |
+| One-to-Many       | Registration | Events       |
+| One-to-Many       | Role     | Registration     |
+| One-to-Many       | Registration | AttendeesPayment |
+| Many-to-One       | Events   | Category         |
+| Many-to-One       | Bookings | Events           |
+| Many-to-One       | Bookings | Registration     |
+| Many-to-One       | Events   | Registration     |
+| Many-to-One       | Registration | Role          |
+| Many-to-One       | AttendeesPayment | Registration |
+| Many-to-Many      | Registration | Events        |
+| Many-to-Many      | Events   | Registration     |
